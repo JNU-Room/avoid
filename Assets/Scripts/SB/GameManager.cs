@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
-namespace ssyo
+namespace SB
 {
     public class GameManager : MonoBehaviour
     {

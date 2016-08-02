@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-namespace ssyo
+namespace MH
 {
     public class Obstacle : MonoBehaviour
     {

@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
-
-namespace ssyo{
-    public class NewBehaviourScript : MonoBehaviour {
+namespace SB
+{
+    public class NewBehaviourScript : MonoBehaviour
+    {
         public float speed = 0.1f;
 
         // Use this for initialization
-        void Start() {
+        void Start()
+        {
 
         }
 
         // Update is called once per frame
-        void Update() {
+        void Update()
+        {
             //float xPosition = transform.localEulerAngles.x;
             // xPosition = speed + Input.GetAxis("Horizontal");
 
