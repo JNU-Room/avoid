@@ -4,12 +4,7 @@ namespace MH
 {
     public class Obstacles : MonoBehaviour
     {
-        void OnCollisionEnter(Collision collision)
-        {
-            Vector3 direction = transform.position - collision.gameObject.transform.position;
-            direction = direction.normalized* 300;
-            collision.gameObject.GetComponent<Rigidbody>().AddForce(direction);
-        }
+
         float delta = 0.1f;
       
         // Use this for initialization

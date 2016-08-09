@@ -2,6 +2,7 @@
 using System.Collections;
 namespace MH
 {
+    // 미완성 스크립트 사용 불가
     public class Player : MonoBehaviour
     {
         public float delta = 0.07f;
@@ -20,9 +21,9 @@ namespace MH
         void Start()
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().MakeMap();
-            y_base = transform.position.y;
+            //y_base = transform.position.y;
             y = y_base;
-            Application.targetFrameRate = 60;
+            //Application.targetFrameRate = 60;
         }
 
         void Update()
