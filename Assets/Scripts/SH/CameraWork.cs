@@ -1,21 +1,26 @@
 ﻿using UnityEngine;
 
 using System.Collections;
+namespace SH
+{
+    public class CameraWork : MonoBehaviour
+    {
 
-public class CameraWork : MonoBehaviour {
+        GameObject player;
 
-    GameObject player;
+        // Use this for initialization
+        void Start()
+        {
 
-	// Use this for initialization
-	void Start () {
+            player = GameObject.Find("Player");
 
-        player = GameObject.Find("Player");
+        }
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        // Update is called once per frame
+        void Update()
+        {
 
-        transform.position = new Vector3(player.transform.position.x + 4.61f, transform.position.y, transform.position.z);
-	}
+            transform.position = new Vector3(player.transform.position.x + 4.61f, transform.position.y, transform.position.z);
+        }
+    }
 }
