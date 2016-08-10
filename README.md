@@ -8,8 +8,8 @@ Pull requests는 매일 오전 10시 ~ 새벽 4시 사이에 확인합니다.
 ####GitBash 사용 관련
 git clone, init, status, add, pull, push, commit 등의 명령어는 기본적으로 개인 저장소에서 사용했으니 설명을 생략합니다.
 >**git remote add upstream https://github.com/JNU-Room/avoid.git<br>
--upstream 저장소를 해당 url로 지정합니다.(최초 한번만 실행하도록 합시다.)
--항상 저장소를 최신으로 유지하기 위함입니다.**
+-upstream 저장소를 해당 url로 지정합니다.(최초 한번만 실행하도록 합시다.)<br>
+-항상 저장소를 최신으로 유지하기 위함입니다.**<br>
 
 **commit 전에 항상 해야 할 명령어**
 >**git fetch upstream<br>
