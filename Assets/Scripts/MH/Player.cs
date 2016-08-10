@@ -5,12 +5,12 @@ namespace MH
     public class Player : MonoBehaviour
     {
         public float delta = 0.07f;
-        public bool grounded = true;
-        public float jumpForce = 250f;
+        public bool grounded = false;
+        public float jumpForce = 270f;
         private bool jump = false;
-        private bool doubleJump = false;        
+        public bool doubleJump = false; //테스트 완료후 private로 숨김예정
         Rigidbody rigdbody;
-
+        //2단점프 키변경 혹은 횟수 세는 방식으로 변경 여부 고민중..//
         void Awake()
         {
             rigdbody = GetComponent<Rigidbody>();
@@ -27,28 +27,50 @@ namespace MH
             float playerX = transform.position.x;
             playerX += delta; // Player 자동이동
             transform.position = new Vector3(playerX, transform.position.y, transform.position.z);
-            if (!grounded && rigdbody.velocity.y == 0)
-            {
-                grounded = true;
-            }
-            if (Input.GetButtonDown("Jump") && grounded == true)
-            {
-                jump = true;               
-            }
-            if (!doubleJump && jump == true)
-            {
-                doubleJump = true;
-            }
-
+            CheckGround();//지면 여부 검사
+            jumpProcess();
         }
         void FixedUpdate()
         {
-            if (jump)
+            Jump();
+            DoubleJump();
+        }
+        void CheckGround()
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.5f))
             {
-                rigdbody.AddForce(transform.up * jumpForce);                
-                jump = false;
-                grounded = false;               
+                if (hit.transform.tag == "GROUND")
+                {
+                    grounded = true;
+                    return;
+                }
             }
+            grounded = false;
+        }
+        void jumpProcess()//점프 설정
+        {
+            if (Input.GetButtonDown("Jump") && grounded == true) //지면이면 jump!
+            {
+                jump = true;
+            }
+            if (!doubleJump && jump == true) //점프인 상태인 경우 2단점프 활성화
+            {
+                doubleJump = true;
+            }
+        }
+        void Jump()
+        {
+            if (!jump)
+                return;
+            rigdbody.AddForce(transform.up * jumpForce);
+            jump = false;
+            
+        }
+        void DoubleJump()
+        {
+            if (!doubleJump)
+                return;
             if (doubleJump)
             {
                 if (Input.GetButtonDown("Jump"))
@@ -57,7 +79,6 @@ namespace MH
                     doubleJump = false;
                 }
             }
-            return;
         }
     }
 }
