@@ -15,11 +15,11 @@ git clone, init, status, add, pull, push, commit 등의 명령어는 기본적�
 >**git fetch upstream<br>
 git merge upstream/master**
 
-이후 status , add, commit 및 push하면 끝. (번거롭지만 타인의 프로젝트에 기여할 때엔 필수사항임에 따라, 연습겸 해보는 것으로 합시다.)
+이후 status , add, commit 및 push하면 끝. (번거롭지만 타인의 프로젝트에 기여할 때엔 필수사항임에 따라, 연습겸 해보는 것으로 합시다.)<br>
 
-remote 설정과 관련해서 에러가 있을 경우, 즉, origin 주소가 개인 fork저장소가 아닌, JNU-Room-avoid 저장소로 지정되어 권한 없음으로 push가 안될 경우 해결법
+**remote 설정과 관련해서 에러가 있을 경우, 즉, origin 주소가 개인 fork저장소가 아닌, JNU-Room-avoid 저장소로 지정되어 권한 없음으로 push가 안될 경우 해결법**
 
-**1)git bash 실행 후, cd avoid 입력<br>
+>**1)git bash 실행 후, cd avoid 입력<br>
 2)git remote -v 입력 후, origin 주소 확인시,<br> https://github.com/JNU-Room/avoid.git 로 보인다면 수정 필요<br>
 3)git remote set-url origin https:본인 fork 저장소 입력<br>
 4)다시 git remote -v 입력 후 잘 변경되었는지 확인.**<br>
