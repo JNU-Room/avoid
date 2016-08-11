@@ -2,10 +2,29 @@
 using System.Collections;
 namespace SH
 {
-    public class Obstacle : MonoBehaviour
+    public abstract class Obstacle : MonoBehaviour
     {
+        public float delta = 0.1f; // y좌표 이동 
+        
+        public void PlayerCollision() // Player와의 충돌 처리
+        {
+            // Player의 Life 감소
+            // Player의 위치 변화
+            // Player 일시정지 or 무적
 
-        float delta = 0.1f;
+            Debug.Log("Player와 충돌"); // 테스트용 출력
+        }
+
+        public void OnTriggerEnter(Collider collider) // 충돌 발생 시 자동 호출 
+                                                       // Collision? Trigger?
+        {
+            if (collider.gameObject.name == "Player") // Player와의 충돌이면
+            {
+                PlayerCollision(); // Player와의 충돌 처리
+            }
+        }
+
+        public abstract void ObstacleMoving(); // Obstract의 이동
 
         // Use this for initialization
         void Start()
@@ -17,12 +36,6 @@ namespace SH
         void Update()
         {
 
-            // 좌표 이동
-
-            if (transform.position.y >= 4.5 || transform.position.y <= -1.5) // 상하단 끝
-                delta *= -1;
-            float newYPosition = transform.position.y + delta;
-            transform.position = new Vector3(transform.position.x, newYPosition, transform.position.z);
         }
     }
 }
