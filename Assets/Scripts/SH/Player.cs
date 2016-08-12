@@ -5,9 +5,28 @@ namespace SH
     public class Player : MonoBehaviour
     {
 
-        float delta = 0.07f;
+        private float delta = 0.07f; // Player의 이동속도
+        private int life = 3; // Player의 Life
 
         // GameManager gmComponent = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        // 외부에서 position에 간섭
+        public void SetPosition(float x, float y, float z)
+        {
+            transform.position = new Vector3(x, y, z);
+        }
+
+        // 외부에서 life Get
+        public int GetLife()
+        {
+            return life;
+        }
+
+        // 외부에서 life Set
+        public void SetLife(int life)
+        {
+            this.life = life;
+        }
 
         // Use this for initialization
         void Start()
