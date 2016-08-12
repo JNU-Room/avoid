@@ -6,13 +6,27 @@ namespace SH
     {
         public float delta = 0.1f; // y좌표 이동 
         
-        public void PlayerCollision() // Player와의 충돌 처리
+        public virtual void PlayerCollision() // Player와의 충돌 처리
         {
-            // Player의 Life 감소
-            // Player의 위치 변화
-            // Player 일시정지 or 무적
+            Debug.Log("Object의 Player와 충돌"); // 테스트용 출력
 
-            Debug.Log("Player와 충돌"); // 테스트용 출력
+            
+            GameObject playerObj = GameObject.Find("Player");
+            if (playerObj == null)
+                return;
+            // error 발생 지점 (수정 필요)
+            Player player = playerObj.GetComponent<Player>(); // 컴포넌트 Player를 갖는 Player 객체 player
+            if (player == null)
+                return;
+
+            // Player의 Life 감소
+            player.SetLife(2);
+
+            // Player의 위치 변화 (수정 필요)
+            player.SetPosition(player.transform.position.x - 5, player.transform.position.y, player.transform.position.z);
+
+            // Player 일시정지 or 무적 (수정 필요)
+
         }
 
         public void OnTriggerEnter(Collider collider) // 충돌 발생 시 자동 호출 

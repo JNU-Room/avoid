@@ -29,10 +29,11 @@ namespace SH
         }
 
         // 오버라이딩
-        public void PlayerCollision() // Player와의 충돌
+        public override void PlayerCollision() // Player와의 충돌
         {
             base.PlayerCollision(); // 부모 메소드 호출
-            // 자기자신 파괴
+            Destroy(gameObject); // 자기자신 파괴
+            Debug.Log("Move의 Player와의 충돌"); // Test용 출력 
         }
 
         // Use this for initialization
