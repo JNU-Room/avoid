@@ -4,22 +4,26 @@ namespace SH
 {
     public class DropObstacle : Obstacle
     {
-        
-        public void OnCollisionEnter() // 충돌 시 호출 메소드
+        float dropRange = 5.0f; // Drop 인식 범위
+        new float delta = -0.12f; // Drop 속도
+
+        public override void OnTriggerEnter(Collider collider) // 충돌 시 호출 메소드
         {
-            // Ground와 충돌 시, Destory
+            base.OnTriggerEnter(collider);
+
+            if (collider.name == "Ground") // Ground와 충돌
+            {
+                delta = 0; // 더이상 떨어지지 않음
+            }
         }
 
         public bool IsInside() // 범위 내에 Player가 접근했는가?
         {
-            /*
-            if (Object의 x - Player의 x < 범위)
+            // 인식 범위 내인지 판별
+            if (transform.position.x - GameObject.Find("Player").transform.position.x < dropRange)
                 return true;
             else
                 return false;
-            */
-
-            return true; // 임시 return 값 
         }
 
         // 오버라이딩
@@ -27,7 +31,8 @@ namespace SH
         {
             if (IsInside()) // Player가 범위 내에 들어오면
             {
-                // 아래로 떨어진다
+                // 아래로 떨어진다 (Ground와 충돌 시, OnTriggerEnter에 의해 정지)
+                transform.position = new Vector3(transform.position.x, transform.position.y + delta, transform.position.z);
             }
         }
 

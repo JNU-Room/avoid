@@ -7,14 +7,13 @@ namespace SH
 
         
         // 충돌 시 호출 메소드
-        public void OnCollisionEnter (Collision collision)
+        public override void OnTriggerEnter (Collider collider)
         {
-            Debug.Log("Collision 호출"); // Test용 출력
+            base.OnTriggerEnter(collider);
 
-            // Ground나 Ceiling에 충돌 시 방향 반전
-            if (collision.gameObject.name == "Ground" || collision.gameObject.name == "Ceiling")
-            { delta *= -1; }
-            
+            // Ground, Ceiling와 충돌 시
+            if (collider.gameObject.name == "Ground" || collider.gameObject.name == "Ceiling")
+            { delta *= -1; } // 방향 반전
         }
 
         // 오버라이딩
@@ -23,9 +22,6 @@ namespace SH
             // 좌표 이동
             float newYPosition = transform.position.y + delta;
             transform.position = new Vector3(transform.position.x, newYPosition, 0);
-
-            // 회전률 고정
-            transform.localEulerAngles = new Vector3(0, 0, 0);
         }
 
         // 오버라이딩
