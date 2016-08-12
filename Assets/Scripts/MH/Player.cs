@@ -18,7 +18,7 @@ namespace MH
         // Use this for initialization
         void Start()
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().MakeMap();
+            //GameObject.Find("GameManager").GetComponent<GameManager>().MakeMap();
         }
 
         // Update is called once per frame
