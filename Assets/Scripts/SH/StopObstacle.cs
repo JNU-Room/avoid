@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
-namespace MH
+namespace SH
 {
-    public class Test : MonoBehaviour
+    public class StopObstacle : Obstacle
     {
+
+        // 오버라이딩
+        public override void ObstacleMoving() { }
 
         // Use this for initialization
         void Start()
@@ -14,7 +17,7 @@ namespace MH
         // Update is called once per frame
         void Update()
         {
-
+            ObstacleMoving(); // Obstacle의 움직임
         }
     }
 }
