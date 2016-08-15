@@ -8,6 +8,7 @@ namespace SH
         
         public virtual void PlayerCollision() // Player와의 충돌 처리
         {
+            /*
             Debug.Log("Object의 Player와 충돌"); // 테스트용 출력
 
             
@@ -27,7 +28,7 @@ namespace SH
 
             // Player 일시정지 or 무적 (수정 필요)
 
-        }
+*/        }
 
         public virtual void OnTriggerEnter(Collider collider) // 충돌 발생 시 자동 호출 
                                                        // Collision? Trigger?

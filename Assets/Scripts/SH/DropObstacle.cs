@@ -41,6 +41,7 @@ namespace SH
         {
             base.PlayerCollision(); // 부모 메소드 호출
             // 자기자신 파괴
+            Debug.Log("Drop -> Player");
         }
 
         // Use this for initialization
