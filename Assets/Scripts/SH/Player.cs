@@ -8,35 +8,25 @@ namespace SH
         private float delta = 0.07f; // Player의 이동속도
         private int life = 3; // Player의 Life
 
-        // GameManager gmComponent = GameObject.Find("GameManager").GetComponent<GameManager>();
-
-        // 외부에서 position에 간섭
-        public void SetPosition(float x, float y, float z)
+        public void P_ObstacleCollision() // Player -> Obatacle 충돌
         {
-            transform.position = new Vector3(x, y, z);
+            Debug.Log("P_ObstacleCollision()");
         }
 
-        // 외부에서 life Get
-        public int GetLife()
+        public void OnTriggerEnter(Collider collider) // Trigger 충돌
         {
-            return life;
+            Debug.Log("Player의 충돌 발생");
+            // Obstacle과 충돌
+            if (collider.gameObject.tag == "MoveObstacle" ||
+                collider.gameObject.tag == "StopObstacle" ||
+                collider.gameObject.tag == "DropObstacle" ||
+                collider.gameObject.tag == "RollObstacle")
+            {
+                P_ObstacleCollision();
+            }
         }
 
-        // 외부에서 life Set
-        public void SetLife(int life)
-        {
-            this.life = life;
-        }
-
-        // Use this for initialization
-        void Start()
-        {
-            //gmComponent.MakeMap();
-            GameObject.Find("GameManager").GetComponent<GameManager>().MakeMap();
-        }
-
-        // Update is called once per frame
-        void Update()
+        public void PlayerMove ()
         {
             float playerX = transform.position.x; // Player의 X좌표
                                                   //  byte jumpNum = 0; // 점프 두 번으로 제한
@@ -51,7 +41,19 @@ namespace SH
             {
                 GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
             }
+        }
 
+        // Use this for initialization
+        void Start()
+        {
+            //GameObject.Find("GameManager").GetComponent<GameManager>().MakeMap();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            PlayerMove();
+            
         }
     }
 }
