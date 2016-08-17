@@ -26,14 +26,7 @@ namespace SH
             }
         }
 
-        // Use this for initialization
-        void Start()
-        {
-            //GameObject.Find("GameManager").GetComponent<GameManager>().MakeMap();
-        }
-
-        // Update is called once per frame
-        void Update()
+        public void PlayerMove ()
         {
             float playerX = transform.position.x; // Player의 X좌표
                                                   //  byte jumpNum = 0; // 점프 두 번으로 제한
@@ -48,7 +41,19 @@ namespace SH
             {
                 GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
             }
+        }
 
+        // Use this for initialization
+        void Start()
+        {
+            //GameObject.Find("GameManager").GetComponent<GameManager>().MakeMap();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            PlayerMove();
+            
         }
     }
 }

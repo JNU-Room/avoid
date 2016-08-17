@@ -28,7 +28,8 @@ namespace SH
 
             // Player 일시정지 or 무적 (수정 필요)
 
-*/        }
+*/
+        }
 
         public virtual void OnTriggerEnter(Collider collider) // 충돌 발생 시 자동 호출 
                                                        // Collision? Trigger?

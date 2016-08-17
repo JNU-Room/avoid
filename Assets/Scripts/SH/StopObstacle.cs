@@ -8,7 +8,6 @@ namespace SH
         // 오버라이딩
         public override void ObstacleMoving()
         {
-            Debug.Log("Stop -> Player");
         }
 
         // Use this for initialization
