@@ -2,7 +2,7 @@
 using System.Collections;
 namespace SH
 {
-    public class GuidedObstacle : Obstacle
+    public class RollObstacle : Obstacle
     {
         Vector3 target; // 타겟 위치
         new float delta = 0.15f; // 이동속도
@@ -34,8 +34,8 @@ namespace SH
         public override void PlayerCollision() // Player와의 충돌
         {
             base.PlayerCollision(); // 부모 메소드 호출
-            // 자기자신 파괴
-            Destroy(gameObject);
+                                    // 자기자신 파괴
+                                    //   Destroy(gameObject);
         }
 
         // Use this for initialization

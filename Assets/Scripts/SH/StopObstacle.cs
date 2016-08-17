@@ -6,7 +6,9 @@ namespace SH
     {
 
         // 오버라이딩
-        public override void ObstacleMoving() { }
+        public override void ObstacleMoving()
+        {
+        }
 
         // Use this for initialization
         void Start()
