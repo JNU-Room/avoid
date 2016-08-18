@@ -7,15 +7,28 @@ namespace SH
 
         private float delta = 0.07f; // Player의 이동속도
         private int life = 3; // Player의 Life
+        private float timeCount = 0; // 시간재기용
+        private bool IsStop = false; // 일시정지용
 
         public void P_ObstacleCollision() // Player -> Obatacle 충돌
         {
-            Debug.Log("P_ObstacleCollision()");
+            life--; // 라이프 감소
+                    // 감소 알림 문구 띄우기 (수정 필요)
+            if (life <= 0) // 라이프 0
+            {
+                // 게임 오버
+            }
+
+
+            IsStop = true; // 일시정지 시킴 
+
+            // 뒤로 이동
+            transform.position = new Vector3(transform.position.x - 2, transform.position.y, transform.position.z);
+
         }
 
         public void OnTriggerEnter(Collider collider) // Trigger 충돌
         {
-            Debug.Log("Player의 충돌 발생");
             // Obstacle과 충돌
             if (collider.gameObject.tag == "MoveObstacle" ||
                 collider.gameObject.tag == "StopObstacle" ||
@@ -52,6 +65,18 @@ namespace SH
         // Update is called once per frame
         void Update()
         {
+            // 2초간 일시정지 (안 먹힘) (수정 필요)
+            while (IsStop == true)
+            {
+                timeCount += Time.deltaTime;
+                if (timeCount > 10)
+                {
+                    timeCount = 0;
+                    IsStop = false;
+                    break;
+                }
+            }
+
             PlayerMove();
             
         }

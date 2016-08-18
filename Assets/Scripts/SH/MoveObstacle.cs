@@ -10,7 +10,6 @@ namespace SH
         public override void OnTriggerEnter (Collider collider)
         {
             base.OnTriggerEnter(collider);
-            Debug.Log("Move");
             // Ground, Ceiling와 충돌 시
             if (collider.gameObject.name == "Ground" || collider.gameObject.name == "Ceiling")
             { delta *= -1; } // 방향 반전
@@ -24,12 +23,6 @@ namespace SH
             transform.position = new Vector3(transform.position.x, newYPosition, 0);
         }
 
-        // 오버라이딩
-        public override void PlayerCollision() // Player와의 충돌
-        {
-            base.PlayerCollision(); // 부모 메소드 호출
-           // Destroy(gameObject); // 자기자신 파괴
-        }
 
         // Use this for initialization
         void Start()
