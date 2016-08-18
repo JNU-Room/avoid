@@ -10,7 +10,11 @@ namespace SH
         private float stopTime = 1; // 일시정지 시간 (초)
         private float nextMove;
         private bool IsStop = false; // 일시정지용
-
+        Rigidbody rigdbody;
+        void Awake()
+        {
+            rigdbody = GetComponent<Rigidbody>();
+        }
         public void P_ObstacleCollision() // Player -> Obatacle 충돌
         {
             life--; // 라이프 감소
@@ -52,10 +56,11 @@ namespace SH
 
 
             // 점프
-            if (Input.GetKeyDown(KeyCode.Space)) // Space 입력
+            if (Input.GetButtonDown("Jump"))
             {
-                GetComponent<Rigidbody>().AddForce(Vector3.up * 450);
+               rigdbody.velocity = new Vector3(0, 9, 0);
             }
+
         }
 
         // Use this for initialization
