@@ -7,7 +7,8 @@ namespace SH
 
         private float delta = 0.07f; // Player의 이동속도
         private int life = 3; // Player의 Life
-        private float timeCount = 0; // 시간재기용
+        private float stopTime = 1; // 일시정지 시간 (초)
+        private float nextMove;
         private bool IsStop = false; // 일시정지용
 
         public void P_ObstacleCollision() // Player -> Obatacle 충돌
@@ -19,8 +20,9 @@ namespace SH
                 // 게임 오버
             }
 
-
-            IsStop = true; // 일시정지 시킴 
+            // 일시정지
+            IsStop = true; 
+            nextMove = Time.time + stopTime;
 
             // 뒤로 이동
             transform.position = new Vector3(transform.position.x - 2, transform.position.y, transform.position.z);
@@ -39,7 +41,7 @@ namespace SH
             }
         }
 
-        public void PlayerMove ()
+        public void PlayerMove()
         {
             float playerX = transform.position.x; // Player의 X좌표
                                                   //  byte jumpNum = 0; // 점프 두 번으로 제한
@@ -52,7 +54,7 @@ namespace SH
             // 점프
             if (Input.GetKeyDown(KeyCode.Space)) // Space 입력
             {
-                GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
+                GetComponent<Rigidbody>().AddForce(Vector3.up * 450);
             }
         }
 
@@ -65,20 +67,16 @@ namespace SH
         // Update is called once per frame
         void Update()
         {
-            // 2초간 일시정지 (안 먹힘) (수정 필요)
-            while (IsStop == true)
+
+            if (IsStop == true) // 일시정지 O
             {
-                timeCount += Time.deltaTime;
-                if (timeCount > 10)
+                if (Time.time > nextMove)
                 {
-                    timeCount = 0;
                     IsStop = false;
-                    break;
                 }
             }
-
-            PlayerMove();
-            
+            else // 일시정지 X
+                PlayerMove();
         }
     }
 }

@@ -7,13 +7,25 @@ namespace SH
         // 인식범위 내에 들어오면 타겟(x-10) 까지 가서 destroy
         Vector3 target; // 타겟 위치
         new float delta = 0.15f; // 이동속도
+        float rollRange = 5.0f; // Roll 인식 범위
+
+        public bool IsInside() // 범위 내에 Player가 접근했는가?
+        {
+            // 인식 범위 내인지 판별
+            if (transform.position.x - GameObject.Find("Player").transform.position.x < rollRange)
+                return true;
+            else
+                return false;
+        }
 
         // 오버라이딩
         public override void ObstacleMoving()
         {
-            // target으로 이동
-            transform.position = Vector3.MoveTowards(transform.position, target, delta); // (현재, 타겟, 속도)
-
+            if (IsInside())
+            {
+                // target으로 이동
+                transform.position = Vector3.MoveTowards(transform.position, target, delta); // (현재, 타겟, 속도)
+            }
            // target에 도달하면 Destroy
            if (transform.position == target)
             {
