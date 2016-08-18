@@ -7,15 +7,30 @@ namespace SH
 
         private float delta = 0.07f; // Player의 이동속도
         private int life = 3; // Player의 Life
+        private float stopTime = 1; // 일시정지 시간 (초)
+        private float nextMove;
+        private bool IsStop = false; // 일시정지용
 
         public void P_ObstacleCollision() // Player -> Obatacle 충돌
         {
-            Debug.Log("P_ObstacleCollision()");
+            life--; // 라이프 감소
+                    // 감소 알림 문구 띄우기 (수정 필요)
+            if (life <= 0) // 라이프 0
+            {
+                // 게임 오버
+            }
+
+            // 일시정지
+            IsStop = true; 
+            nextMove = Time.time + stopTime;
+
+            // 뒤로 이동
+            transform.position = new Vector3(transform.position.x - 2, transform.position.y, transform.position.z);
+
         }
 
         public void OnTriggerEnter(Collider collider) // Trigger 충돌
         {
-            Debug.Log("Player의 충돌 발생");
             // Obstacle과 충돌
             if (collider.gameObject.tag == "MoveObstacle" ||
                 collider.gameObject.tag == "StopObstacle" ||
@@ -26,7 +41,7 @@ namespace SH
             }
         }
 
-        public void PlayerMove ()
+        public void PlayerMove()
         {
             float playerX = transform.position.x; // Player의 X좌표
                                                   //  byte jumpNum = 0; // 점프 두 번으로 제한
@@ -39,7 +54,7 @@ namespace SH
             // 점프
             if (Input.GetKeyDown(KeyCode.Space)) // Space 입력
             {
-                GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
+                GetComponent<Rigidbody>().AddForce(Vector3.up * 450);
             }
         }
 
@@ -52,8 +67,16 @@ namespace SH
         // Update is called once per frame
         void Update()
         {
-            PlayerMove();
-            
+
+            if (IsStop == true) // 일시정지 O
+            {
+                if (Time.time > nextMove)
+                {
+                    IsStop = false;
+                }
+            }
+            else // 일시정지 X
+                PlayerMove();
         }
     }
 }
