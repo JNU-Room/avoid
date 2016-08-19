@@ -35,6 +35,9 @@ namespace SH
 
         public void OnTriggerEnter(Collider collider) // Trigger 충돌
         {
+            if (IsStop) // 일시정지 상태면 Trigger가 안 먹힘
+                return;
+
             // Obstacle과 충돌
             if (collider.gameObject.tag == "MoveObstacle" ||
                 collider.gameObject.tag == "StopObstacle" ||
@@ -48,9 +51,7 @@ namespace SH
         public void PlayerMove()
         {
             float playerX = transform.position.x; // Player의 X좌표
-                                                  //  byte jumpNum = 0; // 점프 두 번으로 제한
-
-            //   playerX += Input.GetAxis("Horizontal") * 0.1f; // Player 좌우이동
+            
             playerX += delta; // Player 자동이동
             transform.position = new Vector3(playerX, transform.position.y, transform.position.z);
 
@@ -66,7 +67,7 @@ namespace SH
         // Use this for initialization
         void Start()
         {
-            //GameObject.Find("GameManager").GetComponent<GameManager>().MakeMap();
+
         }
 
         // Update is called once per frame
