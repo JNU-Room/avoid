@@ -56,11 +56,11 @@ namespace SH
 
 
             // 점프
+
             if (Input.GetButtonDown("Jump"))
             {
                rigdbody.velocity = new Vector3(0, 9, 0);
             }
-
         }
 
         // Use this for initialization
