@@ -60,7 +60,7 @@ namespace SH
 
             if (Input.GetButtonDown("Jump"))
             {
-               rigdbody.velocity = new Vector3(0, 9, 0);
+               rigdbody.velocity = new Vector3(0, 7, 0);
             }
         }
 

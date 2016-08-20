@@ -7,7 +7,7 @@ namespace SH
         // 인식범위 내에 들어오면 타겟(x-10) 까지 가서 destroy
         Vector3 target; // 타겟 위치
         new float delta = 0.15f; // 이동속도
-        float rollRange = 5.0f; // Roll 인식 범위
+        float rollRange = 10.0f; // Roll 인식 범위
 
         public bool IsInside() // 범위 내에 Player가 접근했는가?
         {
