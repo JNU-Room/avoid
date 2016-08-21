@@ -35,14 +35,7 @@ namespace SH
                 transform.position = new Vector3(transform.position.x, transform.position.y + delta, transform.position.z);
             }
         }
-
-        // 오버라이딩
-        public override void PlayerCollision() // Player와의 충돌
-        {
-            base.PlayerCollision(); // 부모 메소드 호출
-            // 자기자신 파괴
-        }
-
+        
         // Use this for initialization
         void Start()
         {
