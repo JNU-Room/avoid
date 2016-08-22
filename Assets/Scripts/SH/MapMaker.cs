@@ -4,7 +4,7 @@ using System.Collections;
 public class MapMaker : MonoBehaviour {
 
     const int CREATE_MAP_NUM = 20; // 생성될 맵 총 개수
-    const int MAP_TYPE_NUM = 4; // 맵 종류의 개수
+    const int MAP_TYPE_NUM = 8; // 맵 종류의 개수
    // int mapCount = 0; // 만들어진 맵 개수 
 
     GameObject[] Maps = new GameObject[CREATE_MAP_NUM]; // 생성될 맵 개수만큼의 GameObject 배열
@@ -65,6 +65,35 @@ public class MapMaker : MonoBehaviour {
             index = RandomNumMake(CREATE_MAP_NUM);
             Maps[index] = Resources.Load("Map/Map4") as GameObject; // Map4 로드
         }
+
+        // MapA
+        for (int i = CREATE_MAP_NUM / MAP_TYPE_NUM * 4; i < CREATE_MAP_NUM / MAP_TYPE_NUM * 5; i++)
+        {
+            index = RandomNumMake(CREATE_MAP_NUM);
+            Maps[index] = Resources.Load("Map/MapA") as GameObject; // MapA 로드
+        }
+
+        // MapB
+        for (int i = CREATE_MAP_NUM / MAP_TYPE_NUM * 5; i < CREATE_MAP_NUM / MAP_TYPE_NUM * 6; i++)
+        {
+            index = RandomNumMake(CREATE_MAP_NUM);
+            Maps[index] = Resources.Load("Map/MapB") as GameObject; // MapB 로드
+        }
+
+        // MapC
+        for (int i = CREATE_MAP_NUM / MAP_TYPE_NUM * 6; i < CREATE_MAP_NUM / MAP_TYPE_NUM * 7; i++)
+        {
+            index = RandomNumMake(CREATE_MAP_NUM);
+            Maps[index] = Resources.Load("Map/MapC") as GameObject; // MapC 로드
+        }
+
+        // MapD
+        for (int i = CREATE_MAP_NUM / MAP_TYPE_NUM * 7; i < CREATE_MAP_NUM / MAP_TYPE_NUM * 8; i++)
+        {
+            index = RandomNumMake(CREATE_MAP_NUM);
+            Maps[index] = Resources.Load("Map/MapD") as GameObject; // MapD 로드
+        }
+
     }
 
     public void AutoCreateMap() // 맵 자동 생성 메소드
