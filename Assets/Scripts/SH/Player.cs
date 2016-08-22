@@ -11,9 +11,11 @@ namespace SH
         private float nextMove;
         private bool IsStop = false; // 일시정지용
         Rigidbody rigdbody;
+        public Animator anmi;
         void Awake()
         {
             rigdbody = GetComponent<Rigidbody>();
+            anmi = GetComponent<Animator>();
         }
         public void P_ObstacleCollision() // Player -> Obatacle 충돌
         {
@@ -45,6 +47,11 @@ namespace SH
                 collider.gameObject.tag == "RollObstacle")
             {
                 P_ObstacleCollision();
+                anmi.Play("cat_hurt"); // 애니메이션 실행 -> 피격
+            }
+            if (collider.gameObject.tag == "GROUND")
+            {
+                anmi.Play("cat_run"); // GROUND Tag 인식 -> 달리기(기본)
             }
         }
 
@@ -61,7 +68,9 @@ namespace SH
             if (Input.GetButtonDown("Jump"))
             {
                rigdbody.velocity = new Vector3(0, 7, 0);
+                anmi.Play("cat_jump"); // 애니메이션 실행 -> 점프
             }
+
         }
 
         // Use this for initialization
