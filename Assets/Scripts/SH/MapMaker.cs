@@ -11,6 +11,33 @@ public class MapMaker : MonoBehaviour {
 
     // 메소드
 
+    public int FindNotNullMaps() // null이 아닌 Maps[]를 찾음
+    {
+        int rand;
+        
+        while (true)
+        {
+            rand = RandomNumMake(CREATE_MAP_NUM);
+
+            if (Maps[rand] != null)
+                break;
+        }
+
+        return rand; 
+    }
+
+    public void ReInputPrefab() // Maps[] == null 에 프리펩 다시 넣어줌
+    {
+        for (int i = 0; i < CREATE_MAP_NUM; i++)
+        {
+            if (Maps[i] == null) // 빈 Maps[] 면 
+            {
+                Debug.Log("Maps[" + i + "] : null");
+              //  Maps[i] = Maps[FindNotNullMaps()]; // null 이 아닌 값 복사
+            }
+        }
+    }
+
     public bool OverlapMap(int index) // 중복 Map 체크
     {
         if (Maps[index] == null)
@@ -93,6 +120,8 @@ public class MapMaker : MonoBehaviour {
             index = RandomNumMake(CREATE_MAP_NUM);
             Maps[index] = Resources.Load("Map/MapD") as GameObject; // MapD 로드
         }
+
+        ReInputPrefab();
 
     }
 
