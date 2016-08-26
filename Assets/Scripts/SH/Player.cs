@@ -67,7 +67,7 @@ namespace SH
 
             if (Input.GetButtonDown("Jump"))
             {
-               rigdbody.velocity = new Vector3(0, 7, 0);
+               rigdbody.velocity = new Vector3(0, 8, 0);
                 anmi.Play("cat_jump"); // 애니메이션 실행 -> 점프
             }
 
