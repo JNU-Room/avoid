@@ -44,7 +44,9 @@ namespace SH
             if (collider.gameObject.tag == "MoveObstacle" ||
                 collider.gameObject.tag == "StopObstacle" ||
                 collider.gameObject.tag == "DropObstacle" ||
-                collider.gameObject.tag == "RollObstacle")
+                collider.gameObject.tag == "RollObstacle" ||
+                collider.gameObject.tag == "BounceObstacle" ||
+                collider.gameObject.tag == "SpinObstacle")
             {
                 P_ObstacleCollision();
                 anmi.Play("cat_hurt"); // 애니메이션 실행 -> 피격
