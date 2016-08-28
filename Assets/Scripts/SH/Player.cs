@@ -4,6 +4,7 @@ namespace SH
 {
     public class Player : MonoBehaviour
     {
+        public const float moveSpeed = 5.0f;
 
         private float delta = 0.07f; // Player의 이동속도
         private int life = 3; // Player의 Life
@@ -57,12 +58,17 @@ namespace SH
             }
         }
 
-        public void PlayerMove()
+       public void PlayerMove()
         {
+
+            /*
             float playerX = transform.position.x; // Player의 X좌표
             
             playerX += delta; // Player 자동이동
             transform.position = new Vector3(playerX, transform.position.y, transform.position.z);
+            */
+            float distanceX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
+            this.gameObject.transform.Translate(distanceX, 0, 0);
 
 
             // 점프
@@ -74,7 +80,8 @@ namespace SH
             }
 
         }
-
+        
+       
         // Use this for initialization
         void Start()
         {
