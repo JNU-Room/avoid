@@ -1,53 +1,104 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour {
 
-    public float jumpForce = 350f; //점프 값
-    public float delta = 0.07f;
-    private bool grounded = false;
-    private bool jump;
-    Rigidbody rigdbody;
+    public class Player : MonoBehaviour
+    {
+        public const float moveSpeed = 5.0f;
 
-    void Awake()
-    {
-        rigdbody = GetComponent<Rigidbody>();
-    }
-    void Start()
-    {
-        //gmComponent.MakeMap();
-        GameObject.Find("GameManager").GetComponent<GameManager>().MakeMap();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        float playerX = transform.position.x;
-        playerX += delta; // Player 자동이동
-        transform.position = new Vector3(playerX, transform.position.y, transform.position.z);
-        CheckGround(); //지면 여부 검사
-        if (Input.GetButtonDown("Jump") && grounded)
-            jump = true;
-    }
-    void FixedUpdate()
-    {
-
-        if (jump)
+        private float delta = 0.07f; // Player의 이동속도
+        private int life = 3; // Player의 Life
+        private float stopTime = 1; // 일시정지 시간 (초)
+        private float nextMove;
+        private bool IsStop = false; // 일시정지용
+        Rigidbody rigdbody;
+        public Animator anmi;
+        void Awake()
         {
-            rigdbody.AddForce(new Vector3(0f, jumpForce, 0f));
-            jump = false;
+            rigdbody = GetComponent<Rigidbody>();
+            anmi = GetComponent<Animator>();
         }
-    }
-    void CheckGround() //지면에 닿을경우 점프 제한 
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.9f))
+        public void P_ObstacleCollision() // Player -> Obatacle 충돌
         {
-            if (hit.transform.tag == "GROUND")
+            life--; // 라이프 감소
+                    // 감소 알림 문구 띄우기 (수정 필요)
+            if (life <= 0) // 라이프 0
             {
-                grounded = true;
+                // 게임 오버
+            }
+
+            // 일시정지
+            IsStop = true;
+            nextMove = Time.time + stopTime;
+
+            // 뒤로 이동
+            transform.position = new Vector3(transform.position.x - 2, transform.position.y, transform.position.z);
+
+        }
+
+        public void OnTriggerEnter(Collider collider) // Trigger 충돌
+        {
+            if (IsStop) // 일시정지 상태면 Trigger가 안 먹힘
                 return;
+
+            // Obstacle과 충돌
+            if (collider.gameObject.tag == "MoveObstacle" ||
+                collider.gameObject.tag == "StopObstacle" ||
+                collider.gameObject.tag == "DropObstacle" ||
+                collider.gameObject.tag == "RollObstacle" ||
+                collider.gameObject.tag == "BounceObstacle" ||
+                collider.gameObject.tag == "SpinObstacle")
+            {
+                P_ObstacleCollision();
+                anmi.Play("cat_hurt"); // 애니메이션 실행 -> 피격
+            }
+            if (collider.gameObject.tag == "GROUND")
+            {
+                anmi.Play("cat_run"); // GROUND Tag 인식 -> 서있는 상태.
             }
         }
-        grounded = false;
+
+        public void PlayerMove()
+        {
+            float distanceX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
+            this.gameObject.transform.Translate(distanceX, 0, 0);
+            if (Input.GetButtonDown("Jump"))
+            {
+                rigdbody.velocity = new Vector3(0, 8, 0);
+            }
+
+
+        }
+        public void PlayerMotion()
+        {
+            if (Input.GetButton("Jump"))
+            {
+                anmi.Play("cat_jump");
+            }
+
+        }
+
+
+        // Use this for initialization
+        void Start()
+        {
+            Debug.Log("SH Player");
+            GameObject.Find("GameManager").GetComponent<MapMaker>().AutoCreateMap();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+            if (IsStop == true) // 일시정지 O
+            {
+                if (Time.time > nextMove)
+                {
+                    IsStop = false;
+                }
+            }
+            else // 일시정지 X
+                PlayerMove();
+            PlayerMotion();
+        }
     }
-}

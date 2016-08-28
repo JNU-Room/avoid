@@ -54,31 +54,28 @@ namespace SH
             }
             if (collider.gameObject.tag == "GROUND")
             {
-                anmi.Play("cat_run"); // GROUND Tag 인식 -> 달리기(기본)
+                anmi.Play("cat_run"); // GROUND Tag 인식 -> 서있는 상태.
             }
         }
 
        public void PlayerMove()
         {
-
-            /*
-            float playerX = transform.position.x; // Player의 X좌표
-            
-            playerX += delta; // Player 자동이동
-            transform.position = new Vector3(playerX, transform.position.y, transform.position.z);
-            */
             float distanceX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
             this.gameObject.transform.Translate(distanceX, 0, 0);
-
-
-            // 점프
-
             if (Input.GetButtonDown("Jump"))
             {
-               rigdbody.velocity = new Vector3(0, 8, 0);
-                anmi.Play("cat_jump"); // 애니메이션 실행 -> 점프
+                rigdbody.velocity = new Vector3(0, 8, 0);                
             }
+            
 
+        }
+        public void PlayerMotion()
+        {     
+            if (Input.GetButton("Jump"))
+            {
+                anmi.Play("cat_jump");
+            }
+            
         }
         
        
@@ -102,6 +99,7 @@ namespace SH
             }
             else // 일시정지 X
                 PlayerMove();
+            PlayerMotion();
         }
     }
 }
