@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 
-    public class Player : MonoBehaviour
+public class Player : MonoBehaviour
     {
         public const float moveSpeed = 5.0f;
 
@@ -11,13 +12,22 @@ using System.Collections;
         private float stopTime = 1; // 일시정지 시간 (초)
         private float nextMove;
         private bool IsStop = false; // 일시정지용
+        private bool IsGameOver = false; // GameOver?
+        public Text GameOverText;
         Rigidbody rigdbody;
         public Animator anmi;
+
         void Awake()
         {
             rigdbody = GetComponent<Rigidbody>();
             anmi = GetComponent<Animator>();
         }
+
+    public int GetLife() // Life Getter 함수
+        {
+            return life;            
+        }
+        
         public void P_ObstacleCollision() // Player -> Obatacle 충돌
         {
             life--; // 라이프 감소
@@ -36,7 +46,18 @@ using System.Collections;
 
         }
 
-        public void OnTriggerEnter(Collider collider) // Trigger 충돌
+        void OnTriggerStay(Collider other)
+        {
+            // Game Over 구현
+            
+            if (life <= 0)
+            {
+               IsGameOver = true;
+               GameOverText.enabled = true;     
+            }
+        }
+
+    public void OnTriggerEnter(Collider collider) // Trigger 충돌
         {
             if (IsStop) // 일시정지 상태면 Trigger가 안 먹힘
                 return;
@@ -86,7 +107,7 @@ using System.Collections;
         // Use this for initialization
         void Start()
         {
-            Debug.Log("SH Player");
+            
             GameObject.Find("GameManager").GetComponent<MapMaker>().AutoCreateMap();
         }
 
