@@ -68,14 +68,14 @@ using System.Collections;
             this.gameObject.transform.Translate(distanceX, 0, 0);
             if (Input.GetButtonDown("Jump"))
             {
-                rigdbody.velocity = new Vector3(0, 8, 0);
+                rigdbody.velocity = new Vector3(2, 8, 0);
             }
 
 
         }
         public void PlayerMotion()
         {
-            if (Input.GetButton("Jump"))
+            if (Input.GetButtonDown("Jump"))
             {
                 anmi.Play("cat_jump");
             }
