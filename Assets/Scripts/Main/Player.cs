@@ -60,6 +60,10 @@ using System.Collections;
 
         public void PlayerMove()
         {
+            if (Input.GetAxis("Horizontal") < 0)
+                return;
+
+
             float distanceX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
             this.gameObject.transform.Translate(distanceX, 0, 0);
             if (Input.GetButtonDown("Jump"))
