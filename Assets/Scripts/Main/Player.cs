@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
             this.gameObject.transform.Translate(distanceX, 0, 0);
             if (Input.GetButtonDown("Jump"))
             {
-                rigdbody.velocity = new Vector3(2, 8, 0);
+                rigdbody.velocity = new Vector3(0, 8, 0);
             }
 
 
