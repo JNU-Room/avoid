@@ -4,6 +4,7 @@
 
 ####저장소 참고사항
 Pull requests는 매일 오전 10시 ~ 새벽 4시 사이에 확인합니다.
+특이사항 공유는 저장소 내 Issues란에서 확인 부탁드립니다.
 
 ####GitBash 사용 관련
 git clone, init, status, add, pull, push, commit 등의 명령어는 기본적으로 개인 저장소에서 사용했으니 설명을 생략합니다.
@@ -27,3 +28,4 @@ git merge upstream/master**
 위 방법을 사용할 경우에 간단하게 해결될 문제임에 따라, 다시 clone하는 수고를 겪지 않았으면 좋겠습니다.
 
 git관련해서 이슈사항이 있으면 다시 정리해서 올려드리겠습니다.<br>
+

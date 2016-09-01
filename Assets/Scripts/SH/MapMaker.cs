@@ -66,7 +66,6 @@ public class MapMaker : MonoBehaviour {
         
         for (int i = 0; i < CREATE_MAP_NUM; i++)
         {
-            Debug.Log("생성 " + i);
             Instantiate(Maps[i],new Vector3(50 * i, -3f, 0), Quaternion.identity); // stone을 position위치에 identity만큼(안 돌림) 돌려서 생성 (이름, 위치, 회전률)
         }
     }
