@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
     {
         public const float moveSpeed = 5.0f;
-
         private float delta = 0.07f; // Player의 이동속도
         private int life = 3; // Player의 Life
         private float stopTime = 1; // 일시정지 시간 (초)
         private float nextMove;
         private bool IsStop = false; // 일시정지용
         private bool IsGameOver = false; // GameOver?
+        public bool grounded = false;    
+        private bool jump = false;
+        public bool doubleJump = false;
         public Text GameOverText;
         Rigidbody rigdbody;
         public Animator anmi;
@@ -23,7 +25,7 @@ public class Player : MonoBehaviour
             anmi = GetComponent<Animator>();
         }
 
-    public int GetLife() // Life Getter 함수
+        public int GetLife() // Life Getter 함수
         {
             return life;            
         }
@@ -83,16 +85,8 @@ public class Player : MonoBehaviour
         {
             if (Input.GetAxis("Horizontal") < 0)
                 return;
-
-
             float distanceX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
             this.gameObject.transform.Translate(distanceX, 0, 0);
-            if (Input.GetButtonDown("Jump"))
-            {
-                rigdbody.velocity = new Vector3(0, 8, 0);
-            }
-
-
         }
         public void PlayerMotion()
         {
@@ -102,8 +96,6 @@ public class Player : MonoBehaviour
             }
 
         }
-
-
         // Use this for initialization
         void Start()
         {
@@ -114,8 +106,9 @@ public class Player : MonoBehaviour
         // Update is called once per frame
         void Update()
         {
-
-            if (IsStop == true) // 일시정지 O
+            jumpProcess(); //이중점프 프로세스
+            CheckGround();//지면 여부 검사
+        if (IsStop == true) // 일시정지 O
             {
                 if (Time.time > nextMove)
                 {
@@ -125,5 +118,55 @@ public class Player : MonoBehaviour
             else // 일시정지 X
                 PlayerMove();
             PlayerMotion();
+
+        }
+    void FixedUpdate()
+    {
+        Jump();
+        DoubleJump();
+    }
+    void CheckGround() // 그라운드 체크
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.78f))
+        {
+            if (hit.transform.tag == "GROUND")
+            {
+                grounded = true;
+                return;
+            }
+        }
+        grounded = false;
+    }
+    void jumpProcess()//점프 설정
+    {
+        if (Input.GetButtonDown("Jump") && grounded == true) //지면이면 jump!
+        {
+            jump = true;
+        }
+        if (!doubleJump && jump == true) //점프인 상태인 경우 2단점프 활성화
+        {
+            doubleJump = true;
         }
     }
+    void Jump() // 1단 점프 조건
+    {
+        if (!jump)
+            return;
+        rigdbody.velocity = new Vector3(0, 8, 0);
+        jump = false;
+    }
+    void DoubleJump() // 더블 점프 조건
+    {
+        if (!doubleJump)
+            return;
+        if (doubleJump)
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                rigdbody.velocity = new Vector3(0, 8, 0);
+                doubleJump = false;
+            }
+        }
+    }
+}
