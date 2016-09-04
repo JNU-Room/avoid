@@ -23,6 +23,14 @@ public class GameOver : MonoBehaviour {
             gameoverText.enabled = true;
 
             // 게임 정지
+            GameObject.Find("Player").GetComponent<SpriteRenderer>().enabled = false; // Player 캐릭터 감추기
+            GameObject.Find("Player").GetComponent<Player>().enabled = false; // Player 스크립트 비활성화
+
+            GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle"); // Obstacle 불러와서 
+            for (int i = 0; i < obstacles.Length; i++) 
+            {
+                Destroy(obstacles[i]); // Obstacle 전부 파괴
+            } 
         }
 	}
 }
