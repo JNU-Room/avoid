@@ -11,11 +11,9 @@ public class Player : MonoBehaviour
         private float stopTime = 1; // 일시정지 시간 (초)
         private float nextMove;
         private bool IsStop = false; // 일시정지용
- //       private bool IsGameOver = false; // GameOver?
         public bool grounded = false;    
         private bool jump = false;
         public bool doubleJump = false;
-      //  public Text GameOverText;
         Rigidbody rigdbody;
         public Animator anmi;
 
@@ -43,18 +41,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x - 2, transform.position.y, transform.position.z);
 
         }
-    /*
-        void OnTriggerStay(Collider other)
-        {
-            // Game Over 구현
-            
-            if (life <= 0)
-            {
-               IsGameOver = true;
-               GameOverText.enabled = true;     
-            }
-        }
-        */
+
     public void OnTriggerEnter(Collider collider) // Trigger 충돌
         {
             if (IsStop) // 일시정지 상태면 Trigger가 안 먹힘
