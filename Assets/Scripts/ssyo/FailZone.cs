@@ -10,7 +10,8 @@ namespace ssyo
         {
             if (collider.gameObject.name == "Player")
             {
-                SceneManager.LoadScene("Practice one");
+                // SceneManager.LoadScene("Practice one");
+                GameObject.Find("Player").GetComponent<Player>().SetLife(0);
             }
         }
 
