@@ -4,7 +4,7 @@ namespace SH
 {
     public class DropObstacle : Obstacle
     {
-        float dropRange = 5.0f; // Drop 인식 범위
+        float dropRange = 3.0f; // Drop 인식 범위
         new float delta = -0.12f; // Drop 속도
 
         public override void OnTriggerEnter(Collider collider) // 충돌 시 호출 메소드
