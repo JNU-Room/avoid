@@ -6,16 +6,13 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
     {
         public const float moveSpeed = 5.0f;
-        private float delta = 0.07f; // Player의 이동속도
         private int life = 3; // Player의 Life
         private float stopTime = 1; // 일시정지 시간 (초)
         private float nextMove;
         private bool IsStop = false; // 일시정지용
-        private bool IsGameOver = false; // GameOver?
         public bool grounded = false;    
         private bool jump = false;
         public bool doubleJump = false;
-        public Text GameOverText;
         Rigidbody rigdbody;
         public Animator anmi;
 
@@ -34,10 +31,6 @@ public class Player : MonoBehaviour
         {
             life--; // 라이프 감소
                     // 감소 알림 문구 띄우기 (수정 필요)
-            if (life <= 0) // 라이프 0
-            {
-                // 게임 오버
-            }
 
             // 일시정지
             IsStop = true;
@@ -48,29 +41,13 @@ public class Player : MonoBehaviour
 
         }
 
-        void OnTriggerStay(Collider other)
-        {
-            // Game Over 구현
-            
-            if (life <= 0)
-            {
-               IsGameOver = true;
-               GameOverText.enabled = true;     
-            }
-        }
-
     public void OnTriggerEnter(Collider collider) // Trigger 충돌
         {
             if (IsStop) // 일시정지 상태면 Trigger가 안 먹힘
                 return;
 
             // Obstacle과 충돌
-            if (collider.gameObject.tag == "MoveObstacle" ||
-                collider.gameObject.tag == "StopObstacle" ||
-                collider.gameObject.tag == "DropObstacle" ||
-                collider.gameObject.tag == "RollObstacle" ||
-                collider.gameObject.tag == "BounceObstacle" ||
-                collider.gameObject.tag == "SpinObstacle")
+            if (collider.gameObject.tag == "Obstacle")
             {
                 P_ObstacleCollision();
                 anmi.Play("cat_hurt"); // 애니메이션 실행 -> 피격
