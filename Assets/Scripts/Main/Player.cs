@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
     {
         public const float moveSpeed = 5.0f;
-        private float delta = 0.07f; // Player의 이동속도
         private int life = 3; // Player의 Life
         private float stopTime = 1; // 일시정지 시간 (초)
         private float nextMove;
