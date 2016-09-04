@@ -26,6 +26,11 @@ public class Player : MonoBehaviour
         {
             return life;            
         }
+
+        public void SetLife(int life) // Life Setter 함수
+        {
+         this.life = life;     
+        }
         
         public void P_ObstacleCollision() // Player -> Obatacle 충돌
         {
