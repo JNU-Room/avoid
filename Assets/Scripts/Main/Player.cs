@@ -36,14 +36,12 @@ public class Player : MonoBehaviour
         {
             life--; // 라이프 감소
                     // 감소 알림 문구 띄우기 (수정 필요)
-
             // 일시정지
             IsStop = true;
             nextMove = Time.time + stopTime;
 
             // 뒤로 이동
             transform.position = new Vector3(transform.position.x - 2, transform.position.y, transform.position.z);
-
         }
 
     public void OnTriggerEnter(Collider collider) // Trigger 충돌
@@ -63,25 +61,24 @@ public class Player : MonoBehaviour
             }
         }
 
-        public void PlayerMove()
+        public void PlayerMove() // Player 이동 
         {
             if (Input.GetAxis("Horizontal") < 0)
                 return;
             float distanceX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
             this.gameObject.transform.Translate(distanceX, 0, 0);
         }
-        public void PlayerMotion()
+        public void PlayerMotion() // Player 동작(점프)
         {
             if (Input.GetButtonDown("Jump"))
             {
-                anmi.Play("cat_jump");
+                anmi.Play("cat_jump"); // 애니메이션 실행 -> 점프
             }
 
         }
         // Use this for initialization
         void Start()
-        {
-            
+        {            
             GameObject.Find("GameManager").GetComponent<MapMaker>().AutoCreateMap();
         }
 
