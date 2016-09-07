@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
         void Start()
         {
             
-            //GameObject.Find("GameManager").GetComponent<MapMaker>().AutoCreateMap();
+            GameObject.Find("GameManager").GetComponent<MapMaker>().AutoCreateMap();
         }
 
         // Update is called once per frame

@@ -3,8 +3,8 @@ using System.Collections;
 
 public class MapMaker : MonoBehaviour {
 
-    const int CREATE_MAP_NUM = 24; // 생성될 맵 총 개수
-    const int MAP_TYPE_NUM = 8; // 맵 종류의 개수
+    const int CREATE_MAP_NUM = 35; // 생성될 맵 총 개수
+    const int MAP_TYPE_NUM = 12; // 맵 종류의 개수
    // int mapCount = 0; // 만들어진 맵 개수 
 
     GameObject[] Maps = new GameObject[CREATE_MAP_NUM]; // 생성될 맵 개수만큼의 GameObject 배열
@@ -37,19 +37,35 @@ public class MapMaker : MonoBehaviour {
                     Maps[i] = Resources.Load("Map/Map4") as GameObject; // Map4 로드
                     break;
 
-                case 4: // MapA
+                case 4: // Map5
+                    Maps[i] = Resources.Load("Map/Map5") as GameObject; // Map5 로드
+                    break;
+
+                case 5: // Map6
+                    Maps[i] = Resources.Load("Map/Map6") as GameObject; // Map6 로드
+                    break;
+
+                case 6: // Map7
+                    Maps[i] = Resources.Load("Map/Map7") as GameObject; // Map7 로드
+                    break;
+
+                case 7: // Map8
+                    Maps[i] = Resources.Load("Map/Map8") as GameObject; // Map8 로드
+                    break;
+
+                case 8: // MapA
                     Maps[i] = Resources.Load("Map/MapA") as GameObject; // MapA 로드
                     break;
 
-                case 5: // MapB
+                case 9: // MapB
                     Maps[i] = Resources.Load("Map/MapB") as GameObject; // MapB 로드
                     break;
 
-                case 6: // MapC
+                case 10: // MapC
                     Maps[i] = Resources.Load("Map/MapC") as GameObject; // MapC 로드
                     break;
 
-                case 7: // MapD
+                case 11: // MapD
                     Maps[i] = Resources.Load("Map/MapD") as GameObject; // MapD 로드
                     break;
 
