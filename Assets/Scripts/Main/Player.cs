@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
         // Use this for initialization
         void Start()
         {            
-            GameObject.Find("GameManager").GetComponent<MapMaker>().AutoCreateMap();
+            GameObject.Find("GameManager").GetComponent<MapMaker>().AutoCreateMap(); // Map 생성 시작
         }
 
         // Update is called once per frame
