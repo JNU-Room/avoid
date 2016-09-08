@@ -78,7 +78,11 @@ public class MapMaker : MonoBehaviour {
     public void AutoCreateMap() // 맵 자동 생성 메소드
     {
         InputPrefab(); // Prefab 입력
-        
+
+        // test용 코드
+        Maps[0] = Resources.Load("Map/Map8") as GameObject; // Map 로드
+        // test 종료
+
         for (int i = 0; i < CREATE_MAP_NUM; i++)
         {
             Instantiate(Maps[i],new Vector3(50 * i, -3f, 0), Quaternion.identity); // Map을 position위치에 identity만큼(안 돌림) 돌려서 생성 (이름, 위치, 회전률)
