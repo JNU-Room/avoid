@@ -1,12 +1,11 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour {
-
-    public Text gameoverText; // GameOver 시 출력 문구
+        
     public int playerLife; // Player의 Life 값
-
+    public GUITexture gameoverGUITexture; //GameOver 시 출력 문구
 	// Use this for initialization
 	void Start () {
 	
@@ -18,8 +17,8 @@ public class GameOver : MonoBehaviour {
         if (playerLife <= 0)
         {
             // 게임오버 문구 출력
-            gameoverText.enabled = true;
-
+            //gameoverText.enabled = true;
+            gameoverGUITexture.enabled = true;
             // 게임 정지
             GameObject.Find("Player").GetComponent<SpriteRenderer>().enabled = false; // Player 캐릭터 감추기
             GameObject.Find("Player").GetComponent<Player>().enabled = false; // Player 스크립트 비활성화
