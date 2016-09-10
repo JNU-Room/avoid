@@ -9,7 +9,7 @@ public class score : MonoBehaviour
     public float player_first_x; // player 최초 x 좌표
     public float player_cur_x; // player 현재 x 좌표
     public float player_distance; // player 이동거리
-    public int size = 6;
+    public int size = 5;
 
     // Use this for initialization
     void Start()
