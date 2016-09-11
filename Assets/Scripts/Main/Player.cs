@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
         public bool doubleJump = false;
         Rigidbody rigdbody;
         public Animator anmi;
+        public bool IsMapMake = true;
 
         void Awake()
         {
@@ -79,8 +80,11 @@ public class Player : MonoBehaviour
         }
         // Use this for initialization
         void Start()
-        {            
-            GameObject.Find("GameManager").GetComponent<MapMaker>().AutoCreateMap(); // Map 생성 시작
+        {
+         if (IsMapMake)
+         {
+             GameObject.Find("GameManager").GetComponent<MapMaker>().AutoCreateMap(); // Map 생성 시작
+         }
         }
 
         // Update is called once per frame
@@ -110,7 +114,7 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.78f))
         {
-            if (hit.transform.tag == "GROUND")
+            if (hit.transform.tag == "GROUND" || hit.transform.tag == "Obstacle")
             {
                 grounded = true;
                 return;
