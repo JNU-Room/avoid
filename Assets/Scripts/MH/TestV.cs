@@ -20,7 +20,6 @@ namespace MH
 
         void Start()
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().MakeMap();
             //y_base = transform.position.y;
             y = y_base;
             //Application.targetFrameRate = 60;
