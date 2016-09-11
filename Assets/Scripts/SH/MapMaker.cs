@@ -95,6 +95,8 @@ public class MapMaker : MonoBehaviour {
     {
         InputPrefab(); // Prefab 입력
         
+        Maps[0] = Resources.Load("Map/Map9") as GameObject; // test용 Maps[0]
+
         for (int i = 0; i < CREATE_MAP_NUM; i++)
         {
             Instantiate(Maps[i],new Vector3(50 * i, -3f, 0), Quaternion.identity); // Map을 position위치에 identity만큼(안 돌림) 돌려서 생성 (이름, 위치, 회전률)
