@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
             {
                 P_ObstacleCollision();
                 anmi.Play("cat_hurt"); // 애니메이션 실행 -> 피격
-            GetComponent<AudioSource>().Play();
+            //GetComponent<AudioSource>().Play();
             }
             if (collider.gameObject.tag == "GROUND")
             {
