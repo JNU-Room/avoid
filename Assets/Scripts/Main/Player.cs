@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
         public bool doubleJump = false;
         Rigidbody rigdbody;
         public Animator anmi;
-        public bool IsMapMake = true;
 
         void Awake()
         {
@@ -81,10 +80,6 @@ public class Player : MonoBehaviour
         // Use this for initialization
         void Start()
         {
-         if (IsMapMake)
-         {
-             GameObject.Find("GameManager").GetComponent<MapMaker>().AutoCreateMap(); // Map 생성 시작
-         }
         }
 
         // Update is called once per frame
