@@ -114,7 +114,7 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.78f))
         {
-            if (hit.transform.tag == "GROUND")
+            if (hit.transform.tag == "GROUND" || hit.transform.tag == "Obstacle")
             {
                 grounded = true;
                 return;
