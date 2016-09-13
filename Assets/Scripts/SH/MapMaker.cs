@@ -95,7 +95,11 @@ public class MapMaker : MonoBehaviour {
     {
         InputPrefab(); // Prefab 입력
         
+<<<<<<< HEAD
         // Maps[0] = Resources.Load("Map/Map9") as GameObject; // test용 Maps[0]
+=======
+        //Maps[0] = Resources.Load("Map/Map9") as GameObject; // test용 Maps[0]
+>>>>>>> fc7607a08905233abcdd1c8d158a9a609a179e21
 
         for (int i = 0; i < CREATE_MAP_NUM; i++)
         {
