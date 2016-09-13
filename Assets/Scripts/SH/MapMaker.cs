@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class MapMaker : MonoBehaviour {
@@ -95,7 +95,7 @@ public class MapMaker : MonoBehaviour {
     {
         InputPrefab(); // Prefab 입력
         
-        //Maps[0] = Resources.Load("Map/Map9") as GameObject; // test용 Maps[0]
+        // Maps[0] = Resources.Load("Map/Map9") as GameObject; // test용 Maps[0]
 
         for (int i = 0; i < CREATE_MAP_NUM; i++)
         {
