@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MapMaker : MonoBehaviour {
+public class MapMaker : MonoBehaviour
+{
 
     const int CREATE_MAP_NUM = 35; // 생성될 맵 총 개수
     const int MAP_TYPE_NUM = 16; // 맵 종류의 개수
-   // int mapCount = 0; // 만들어진 맵 개수 
+                                 // int mapCount = 0; // 만들어진 맵 개수 
 
     GameObject[] Maps = new GameObject[CREATE_MAP_NUM]; // 생성될 맵 개수만큼의 GameObject 배열
 
@@ -17,9 +18,9 @@ public class MapMaker : MonoBehaviour {
 
         for (int i = 0; i < CREATE_MAP_NUM; i++)
         {
-            randomType = Random.Range(0,MAP_TYPE_NUM);
+            randomType = Random.Range(0, MAP_TYPE_NUM);
 
-            switch(randomType)
+            switch (randomType)
             {
                 case 0: // Map1
                     Maps[i] = Resources.Load("Map/Map1") as GameObject; // Map1 로드
@@ -94,16 +95,12 @@ public class MapMaker : MonoBehaviour {
     public void AutoCreateMap() // 맵 자동 생성 메소드
     {
         InputPrefab(); // Prefab 입력
-        
-<<<<<<< HEAD
+
         // Maps[0] = Resources.Load("Map/Map9") as GameObject; // test용 Maps[0]
-=======
-        //Maps[0] = Resources.Load("Map/Map9") as GameObject; // test용 Maps[0]
->>>>>>> fc7607a08905233abcdd1c8d158a9a609a179e21
 
         for (int i = 0; i < CREATE_MAP_NUM; i++)
         {
-            Instantiate(Maps[i],new Vector3(50 * i, -3f, 0), Quaternion.identity); // Map을 position위치에 identity만큼(안 돌림) 돌려서 생성 (이름, 위치, 회전률)
+            Instantiate(Maps[i], new Vector3(50 * i, -3f, 0), Quaternion.identity); // Map을 position위치에 identity만큼(안 돌림) 돌려서 생성 (이름, 위치, 회전률)
         }
     }
 }
