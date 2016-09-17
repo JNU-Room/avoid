@@ -6,7 +6,7 @@ namespace SH
     {
         public const float moveSpeed = 5.0f;
 
-        private float delta = 0.07f; // Player의 이동속도
+   //     private float delta = 0.07f; // Player의 이동속도
         private int life = 3; // Player의 Life
         private float stopTime = 1; // 일시정지 시간 (초)
         private float nextMove;
@@ -83,7 +83,7 @@ namespace SH
         void Start()
         {
             Debug.Log("SH Player");
-            GameObject.Find("GameManager").GetComponent<MapMaker>().AutoCreateMap();
+      //      GameObject.Find("GameManager").GetComponent<MapMaker>().AutoCreateMap();
         }
 
         // Update is called once per frame
