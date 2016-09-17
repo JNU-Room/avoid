@@ -83,7 +83,7 @@ namespace SH
         void Start()
         {
             Debug.Log("SH Player");
-            GameObject.Find("GameManager").GetComponent<MapMaker>().AutoCreateMap();
+      //      GameObject.Find("GameManager").GetComponent<MapMaker>().AutoCreateMap();
         }
 
         // Update is called once per frame
