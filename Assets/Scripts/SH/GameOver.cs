@@ -11,8 +11,8 @@ public class GameOver : MonoBehaviour {
 	
         // Use this for initialization
 	void Start () {
-	
-	}
+        GameObject.Find("GameManager").GetComponent<restart>().enabled = false; // rt버튼 처음에 안 뜨게
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -22,8 +22,9 @@ public class GameOver : MonoBehaviour {
             
 
             // 게임오버 문구 출력
-            //gameoverText.enabled = true;
             gameoverGUITexture.enabled = true;
+            // 재도전 버튼 출력
+            GameObject.Find("GameManager").GetComponent<restart>().enabled = true;
             // 게임 정지
             GameObject.Find("Player").GetComponent<SpriteRenderer>().enabled = false; // Player 캐릭터 감추기
             GameObject.Find("Player").GetComponent<Player>().enabled = false; // Player 스크립트 비활성화
