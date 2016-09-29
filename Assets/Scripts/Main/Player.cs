@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
             }
             if (collider.gameObject.tag == "GROUND")
             {
-                anmi.Play("cat_run"); // GROUND Tag 인식 -> 서있는 상태.
+                anmi.Play("cat_idle"); // GROUND Tag 인식 -> 서있는 상태.
             }
         }
 
@@ -68,9 +68,19 @@ public class Player : MonoBehaviour
                 return;
             float distanceX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
             this.gameObject.transform.Translate(distanceX, 0, 0);
+
         }
         public void PlayerMotion() // Player 동작(점프)
         {
+            if (Input.GetButton("Horizontal"))
+            {
+                if (anmi != null) anmi.SetBool("runChk", true);        
+            }
+            else
+            {
+                if (anmi != null) anmi.SetBool("runChk", false);
+            }
+
             if (Input.GetButtonDown("Jump"))
             {
                 anmi.Play("cat_jump"); // 애니메이션 실행 -> 점프
