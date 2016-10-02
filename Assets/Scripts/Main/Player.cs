@@ -58,7 +58,8 @@ public class Player : MonoBehaviour
             }
             if (collider.gameObject.tag == "GROUND")
             {
-                anmi.Play("cat_idle"); // GROUND Tag 인식 -> 서있는 상태.
+               
+                if (anmi != null) anmi.SetBool("jmpChk", false);
             }
         }
 
@@ -81,11 +82,11 @@ public class Player : MonoBehaviour
                 if (anmi != null) anmi.SetBool("runChk", false);
             }
 
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButton("Jump"))
             {
-                anmi.Play("cat_jump"); // 애니메이션 실행 -> 점프
+                if (anmi != null) anmi.SetBool("jmpChk", true);
             }
-
+            
         }
         // Use this for initialization
         void Start()
@@ -97,6 +98,7 @@ public class Player : MonoBehaviour
         {
             jumpProcess(); //이중점프 프로세스
             CheckGround();//지면 여부 검사
+            PlayerMotion();
         if (IsStop == true) // 일시정지 O
             {
                 if (Time.time > nextMove)
@@ -106,7 +108,7 @@ public class Player : MonoBehaviour
             }
             else // 일시정지 X
                 PlayerMove();
-            PlayerMotion();
+ 
 
         }
     void FixedUpdate()
