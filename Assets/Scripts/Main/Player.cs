@@ -53,13 +53,13 @@ public class Player : MonoBehaviour
             if (collider.gameObject.tag == "Obstacle")
             {
                 P_ObstacleCollision();
-                anmi.Play("cat_hurt"); // 애니메이션 실행 -> 피격
+                if (anmi != null) anmi.SetBool("dmgChk", true); //Obstacle Tag 인식시, dmgChk true로 변경
             //GetComponent<AudioSource>().Play();
             }
             if (collider.gameObject.tag == "GROUND")
-            {
-               
-                if (anmi != null) anmi.SetBool("jmpChk", false);
+            {               
+                if (anmi != null) anmi.SetBool("jmpChk", false); //GROUND Tag 인식시, jmpChk false로 변경
+                if (anmi != null) anmi.SetBool("dmgChk", false);
             }
         }
 
@@ -75,16 +75,16 @@ public class Player : MonoBehaviour
         {
             if (Input.GetButton("Horizontal"))
             {
-                if (anmi != null) anmi.SetBool("runChk", true);        
+            if (anmi != null) anmi.SetBool("runChk", true);  //->방향키 입력했을때 runChk true로 변경       
             }
             else
             {
-                if (anmi != null) anmi.SetBool("runChk", false);
+                if (anmi != null) anmi.SetBool("runChk", false); //->방향키 미입력시 runChk false로 변경  
             }
 
             if (Input.GetButton("Jump"))
             {
-                if (anmi != null) anmi.SetBool("jmpChk", true);
+                if (anmi != null) anmi.SetBool("jmpChk", true); //space 키입력시, jmpChk true로 변경
             }
             
         }
@@ -104,7 +104,8 @@ public class Player : MonoBehaviour
                 if (Time.time > nextMove)
                 {
                     IsStop = false;
-                }
+                    if (anmi != null) anmi.SetBool("dmgChk", false);
+            }
             }
             else // 일시정지 X
                 PlayerMove();
