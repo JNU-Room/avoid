@@ -1,5 +1,5 @@
 #JNU-Room - avoid
-###피하거나 말거나
+###엄마찾아 고양리
 >**어릴적 누구나 경험했던 간단한 게임을 Unity(C#)을 통해 제작중입니다.**
 
 ####저장소 참고사항
@@ -24,8 +24,12 @@ git merge upstream/master**
 2)git remote -v 입력 후, origin 주소 확인시,<br> https://github.com/JNU-Room/avoid.git 로 보인다면 수정 필요<br>
 3)git remote set-url origin https:본인 fork 저장소 입력<br>
 4)다시 git remote -v 입력 후 잘 변경되었는지 확인.**<br>
+<br>
 
-위 방법을 사용할 경우에 간단하게 해결될 문제임에 따라, 다시 clone하는 수고를 겪지 않았으면 좋겠습니다.
+위 방법을 사용할 경우에 간단하게 해결될 문제임에 따라, 다시 clone하는 수고를 겪지 않았으면 좋겠습니다.<br>
+
+**알아두면 나름 편리한(?) Git 명령어**<br>
+>**1)explorer . - git bash에서 지정한 위치의 탐색기 창을 open**<br>
 
 git관련해서 이슈사항이 있으면 다시 정리해서 올려드리겠습니다.<br>
 
