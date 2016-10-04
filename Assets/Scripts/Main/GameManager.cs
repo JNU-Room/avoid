@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (GameObject.Find("GameManager").GetComponent<MapMaker>().IsExistLast() == true) // 마지막 맵이 생성되었으면
+        {
+            IsMapMake = false;
+        }
+
         if (IsMapMake)
         {
             GameObject.Find("GameManager").GetComponent<MapMaker>().CreateMap(); // Map 계속 생성

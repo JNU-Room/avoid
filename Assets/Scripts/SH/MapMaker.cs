@@ -11,6 +11,18 @@ public class MapMaker : MonoBehaviour
     GameObject[] Maps = new GameObject[CREATE_MAP_NUM]; // 생성될 맵 개수만큼의 GameObject 배열
 
     // 메소드
+
+    public bool IsExistLast() // 마지막 맵이 생성되었는가?
+    {
+        if (Maps[CREATE_MAP_NUM - 1] != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     
     public void InputPrefab(int i) // Maps[i]에 Map Prefab을 입력
     {
@@ -110,7 +122,6 @@ public class MapMaker : MonoBehaviour
             InputPrefab(PlayerMap + 1);
 
             Maps[PlayerMap + 1] = (GameObject) Instantiate(Maps[PlayerMap + 1], new Vector3(50 * (PlayerMap + 1), -3f, 0), Quaternion.identity); // Map을 position위치에 identity만큼(안 돌림) 돌려서 생성 (이름, 위치, 회전률)
-            Debug.Log("CreateMap");
         } 
     }
 
