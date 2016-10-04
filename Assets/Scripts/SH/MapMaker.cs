@@ -134,8 +134,6 @@ public class MapMaker : MonoBehaviour
             if (Maps[PlayerMap - 2] != null) // 전전 맵이 null이 아니면
             {
                  DestroyImmediate(Maps[PlayerMap - 2], true);
-                // Resources.UnloadAsset(Maps[PlayerMap - 2]); 
-                Debug.Log("DeleteMap");
             }
         }
     }
