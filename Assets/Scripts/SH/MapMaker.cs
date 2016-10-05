@@ -28,76 +28,82 @@ public class MapMaker : MonoBehaviour
     {
         int randomType;
 
-            randomType = Random.Range(0, MAP_TYPE_NUM);
+        if (i == (CREATE_MAP_NUM - 1 ))
+        {
+            Maps[i] = Resources.Load("Map/LastMap") as GameObject; // LastMap 로드
+            return;
+        }
 
-            switch (randomType)
-            {
-                case 0: // Map1
-                    Maps[i] = Resources.Load("Map/Map1") as GameObject; // Map1 로드
-                    break;
+        randomType = Random.Range(0, MAP_TYPE_NUM);
 
-                case 1: // Map2
-                    Maps[i] = Resources.Load("Map/Map2") as GameObject; // Map2 로드
-                    break;
+        switch (randomType)
+        {
+            case 0: // Map1
+                Maps[i] = Resources.Load("Map/Map1") as GameObject; // Map1 로드
+                break;
 
-                case 2: // Map3
-                    Maps[i] = Resources.Load("Map/Map3") as GameObject; // Map3 로드
-                    break;
+            case 1: // Map2
+                Maps[i] = Resources.Load("Map/Map2") as GameObject; // Map2 로드
+                break;
 
-                case 3: // Map4
-                    Maps[i] = Resources.Load("Map/Map4") as GameObject; // Map4 로드
-                    break;
+            case 2: // Map3
+                Maps[i] = Resources.Load("Map/Map3") as GameObject; // Map3 로드
+                break;
 
-                case 4: // Map5
-                    Maps[i] = Resources.Load("Map/Map5") as GameObject; // Map5 로드
-                    break;
+            case 3: // Map4
+                Maps[i] = Resources.Load("Map/Map4") as GameObject; // Map4 로드
+                break;
 
-                case 5: // Map6
-                    Maps[i] = Resources.Load("Map/Map6") as GameObject; // Map6 로드
-                    break;
+            case 4: // Map5
+                Maps[i] = Resources.Load("Map/Map5") as GameObject; // Map5 로드
+                break;
 
-                case 6: // Map7
-                    Maps[i] = Resources.Load("Map/Map7") as GameObject; // Map7 로드
-                    break;
+            case 5: // Map6
+                Maps[i] = Resources.Load("Map/Map6") as GameObject; // Map6 로드
+                break;
 
-                case 7: // Map8
-                    Maps[i] = Resources.Load("Map/Map8") as GameObject; // Map8 로드
-                    break;
+            case 6: // Map7
+                Maps[i] = Resources.Load("Map/Map7") as GameObject; // Map7 로드
+                break;
 
-                case 8: // Map9
-                    Maps[i] = Resources.Load("Map/Map9") as GameObject; // Map9 로드
-                    break;
+            case 7: // Map8
+                Maps[i] = Resources.Load("Map/Map8") as GameObject; // Map8 로드
+                break;
 
-                case 9: // Map10
-                    Maps[i] = Resources.Load("Map/Map10") as GameObject; // Map10 로드
-                    break;
+            case 8: // Map9
+                Maps[i] = Resources.Load("Map/Map9") as GameObject; // Map9 로드
+                break;
 
-                case 10: // Map11
-                    Maps[i] = Resources.Load("Map/Map11") as GameObject; // Map11 로드
-                    break;
+            case 9: // Map10
+                Maps[i] = Resources.Load("Map/Map10") as GameObject; // Map10 로드
+                break;
 
-                case 11: // Map12
-                    Maps[i] = Resources.Load("Map/Map12") as GameObject; // Map12 로드
-                    break;
+            case 10: // Map11
+                Maps[i] = Resources.Load("Map/Map11") as GameObject; // Map11 로드
+                break;
 
-                case 12: // MapA
-                    Maps[i] = Resources.Load("Map/MapA") as GameObject; // MapA 로드
-                    break;
+            case 11: // Map12
+                Maps[i] = Resources.Load("Map/Map12") as GameObject; // Map12 로드
+                break;
 
-                case 13: // MapB
-                    Maps[i] = Resources.Load("Map/MapB") as GameObject; // MapB 로드
-                    break;
+            case 12: // MapA
+                Maps[i] = Resources.Load("Map/MapA") as GameObject; // MapA 로드
+                break;
 
-                case 14: // MapC
-                    Maps[i] = Resources.Load("Map/MapC") as GameObject; // MapC 로드
-                    break;
+            case 13: // MapB
+                Maps[i] = Resources.Load("Map/MapB") as GameObject; // MapB 로드
+                break;
 
-                case 15: // MapD
-                    Maps[i] = Resources.Load("Map/MapD") as GameObject; // MapD 로드
-                    break;
+            case 14: // MapC
+                Maps[i] = Resources.Load("Map/MapC") as GameObject; // MapC 로드
+                break;
 
-                default:
-                    break;
+            case 15: // MapD
+                Maps[i] = Resources.Load("Map/MapD") as GameObject; // MapD 로드
+                break;
+
+            default:
+                break;
 
         }
     }
