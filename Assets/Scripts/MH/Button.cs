@@ -19,6 +19,6 @@ public class Button : MonoBehaviour {
     }
     public void ExitActive()
     {
-
+        Application.Quit(); // 게임 종료
     }
 }
