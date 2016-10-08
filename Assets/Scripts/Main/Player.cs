@@ -15,11 +15,18 @@ public class Player : MonoBehaviour
     public bool doubleJump = false;
     Rigidbody rigdbody;
     public Animator anmi;
+    public Start_BGM Audio_BGM; 
+    
 
     void Awake()
     {
         rigdbody = GetComponent<Rigidbody>();
         anmi = GetComponent<Animator>();
+    }
+    // Use this for initialization
+    void Start()
+    {
+        Audio_BGM = GameObject.Find("Start_BGM").GetComponent<Start_BGM>();
     }
 
     public int GetLife() // Life Getter 함수
@@ -54,7 +61,7 @@ public class Player : MonoBehaviour
         {
             P_ObstacleCollision();
             if (anmi != null) anmi.SetBool("dmgChk", true); //Obstacle Tag 인식시, dmgChk true로 변경
-        //GetComponent<AudioSource>().Play();
+            DmgSound();
         }
         if (collider.gameObject.tag == "GROUND")
         {               
@@ -142,12 +149,6 @@ public class Player : MonoBehaviour
             }
         }
     }
-
-    // Use this for initialization
-    void Start()
-    {
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -168,6 +169,10 @@ public class Player : MonoBehaviour
         {
             PlayerMove();
         }
+    }
+    void DmgSound() //피격 사운드
+    {
+        Audio_BGM._audio.PlayOneShot(Audio_BGM.dmgChkBGM);
     }
 
 }
