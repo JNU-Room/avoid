@@ -9,6 +9,7 @@ public class coin : MonoBehaviour {
         if(col.gameObject.name == "Player")
         {
             Destroy(gameObject);
+            GameObject.Find("score").GetComponent<score>().addcoin(1);
         }
     }
 

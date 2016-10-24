@@ -9,12 +9,19 @@ public class score : MonoBehaviour
     public float player_old_x; // player 이전 x 좌표
     public float player_cur_x; // player 현재 x 좌표
     public float player_distance; // player 이동거리
+    public float coin_score = 0;
 
     // Use this for initialization
     void Start()
     {
         player_old_x = GameObject.Find("Player").transform.position.x; // 최초 x 초기화
         score_ti = 0;
+    }
+
+    public void addcoin(int coin)
+    {
+        coin_score += coin;
+        
     }
 
     // Update is called once per frame
@@ -27,6 +34,7 @@ public class score : MonoBehaviour
 
         // score 관련
         score_ti += (int)(player_distance * 50); // 점수 = 점수 + (이동거리 * 50)
+        score_ti += (int)(coin_score * 50);
         score_te.text = score_ti + "점"; // 점수 출력
     }
 }
