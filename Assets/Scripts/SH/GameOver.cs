@@ -6,10 +6,12 @@ public class GameOver : MonoBehaviour {
         
     public int playerLife; // Player의 Life 값
     public GUITexture gameoverGUITexture; //GameOver 시 출력 문구
-    
+    public Start_BGM Audio_BGM;
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         GameObject.Find("GameManager").GetComponent<restart>().enabled = false; // rt버튼 처음에 안 뜨게
+        Audio_BGM = GameObject.Find("Start_BGM").GetComponent<Start_BGM>();
     }
 	
 	// Update is called once per frame
@@ -32,7 +34,7 @@ public class GameOver : MonoBehaviour {
             {
                 Destroy(obstacles[i]); // Obstacle 전부 파괴
             }
-            
+            Audio_BGM.RestartGame();
             
         }
 	}
