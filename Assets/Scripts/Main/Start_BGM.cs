@@ -18,10 +18,16 @@ public class Start_BGM : MonoBehaviour {
         DontDestroyOnLoad(this.gameObject);
 
     }
-    void StartGame()
+    public void StartGame()
     {
         _audio.clip = startBGM;
         _audio.Play();
-        SceneManager.LoadScene("Practice one");
+        //SceneManager.LoadScene("Practice one");
     }
+    public void RestartGame()
+    {
+        _audio.clip = startBGM;
+        _audio.Stop();
+    }
+
 }
