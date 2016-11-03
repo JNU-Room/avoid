@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class Start_BGM : MonoBehaviour {
     public AudioClip startBGM;
     public AudioClip dmgChkBGM;
+    public AudioClip itmGetBGM;
     public AudioSource _audio;
     public static Start_BGM instance;
     void Awake()

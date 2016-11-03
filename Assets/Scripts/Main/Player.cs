@@ -68,6 +68,10 @@ public class Player : MonoBehaviour
             if (anmi != null) anmi.SetBool("jmpChk", false); //GROUND Tag 인식시, jmpChk false로 변경
             if (anmi != null) anmi.SetBool("dmgChk", false);
         }
+        if (collider.gameObject.tag == "Item")
+        {
+            ItmSound();
+        }
     }
 
     public void PlayerMove() // Player 이동 
@@ -173,6 +177,10 @@ public class Player : MonoBehaviour
     void DmgSound() //피격 사운드
     {
         Audio_BGM._audio.PlayOneShot(Audio_BGM.dmgChkBGM);
+    }
+    public void ItmSound() //아이템 사운드
+    {
+        Audio_BGM._audio.PlayOneShot(Audio_BGM.itmGetBGM);
     }
 
 }
