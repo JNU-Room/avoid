@@ -6,10 +6,17 @@ public class Start_BGM : MonoBehaviour {
     public AudioClip startBGM;
     public AudioClip dmgChkBGM;
     public AudioSource _audio;
-
+    public static Start_BGM instance;
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
+
     }
     void StartGame()
     {
