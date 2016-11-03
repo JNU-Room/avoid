@@ -6,11 +6,9 @@ public class GameOver : MonoBehaviour {
         
     public int playerLife; // Player의 Life 값
     public GUITexture gameoverGUITexture; //GameOver 시 출력 문구
-
     
-	
-        // Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         GameObject.Find("GameManager").GetComponent<restart>().enabled = false; // rt버튼 처음에 안 뜨게
     }
 	
@@ -34,7 +32,8 @@ public class GameOver : MonoBehaviour {
             {
                 Destroy(obstacles[i]); // Obstacle 전부 파괴
             }
-         
+            
+            
         }
 	}
 }
