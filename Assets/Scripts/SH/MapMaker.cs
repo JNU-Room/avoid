@@ -4,7 +4,7 @@ using System.Collections;
 public class MapMaker : MonoBehaviour
 {
 
-    const int CREATE_MAP_NUM = 35; // 생성될 맵 총 개수
+    const int CREATE_MAP_NUM = 60; // 생성될 맵 총 개수
     const int MAP_TYPE_NUM = 16; // 맵 종류의 개수
     int PlayerMap; // Player 현재 위치 맵
 
