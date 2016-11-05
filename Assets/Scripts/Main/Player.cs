@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
     void CheckGround() // 그라운드 체크
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.75f))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.78f))
         {
             if (hit.transform.tag == "GROUND" || hit.transform.tag == "Obstacle")
             {
